@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/*
 const age =27; //stala
 const twiceTheAge = age * 2; //stala
 
@@ -12,11 +13,31 @@ String getFullName2(String firstName, String lastName) => '$firstName $lastName'
 void printMyName(){
 
 }
+*/
 void main() {
     //final - zmienna ktora nie moze byc zmieniona (const jest bardziej optymalne)
-  var name = 'Lubie placki';
-  name = 'Lubie placki z jabłkami';
   runApp(const MyApp());
+}
+
+void test(){
+  const name = 'Foo';
+
+  if (name == 'Foo'){
+    print('Yes this is Foo');
+  }
+  else{ //istnieje takze else if
+    print('No this is not Foo');
+  }
+
+  var age = 20;
+  final ageMinusOne = age--;
+  print(age); //19
+  print(ageMinusOne); //20
+
+  final name2 = 'Lubie_placki';
+
+  final name2Times20 = name2 * 20;
+  print(name2Times20);
 }
 
 class MyApp extends StatelessWidget {
@@ -26,6 +47,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //print(getFullName('Marek', 'Kowalski'));
+    test();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
