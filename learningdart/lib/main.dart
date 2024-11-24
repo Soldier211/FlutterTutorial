@@ -40,6 +40,27 @@ void test(){
   print(name2Times20);
 }
 
+void test2(){
+  final names = ['Foo','Bar','Baz']; //0 based (zaczyna sie od 0) - lista
+  print(names[0]); //Foo
+  final dlugosc = names.length;
+  print(dlugosc); //3
+  //sets
+  var names2 = {'Foo','Bar','Baz'}; //jesli dam jeszcze raz Foo to nie bedzie go w secie (bedzie error)
+  names2.add('Foo');
+  print(names2);
+
+  //maps
+  var names3 = { //keys must be unique
+    'first': 'Foo',
+    'second': 'Bar',
+    'third': 'Baz'
+  };
+  print(names3);
+  names3['third'] = "Lubie placki";
+  print(names3);
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -47,7 +68,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //print(getFullName('Marek', 'Kowalski'));
-    test();
+    test2();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
