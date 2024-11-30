@@ -26,6 +26,16 @@ void test(){
   print(name);
   name = null; 
 
+  List<String?>? names = ['Foo','Bar','Baz2',null]; //lista jest nullable
+  names = null; //tak tez moze byc
+
+  const String? firstName = null;
+  const String? middleName = null;
+  const String? lastName = 'Baz';
+
+  //cherry-picking non-null values
+  //jesli wyrazenie po lewej jest null to wybierz prawe
+  const firstNonNullValue = firstName ?? middleName ?? lastName;
 
 }
 
@@ -50,6 +60,27 @@ void test2(){
   print(names3);
 }
 
+void test3(String? firstName, String? middleName, String? lastName){
+  String? name = firstName;
+  name ??= middleName; //jesli name jest null to przypisz mu middleName
+  name ??= lastName; //jesli name jest null to przypisz mu lastName
+  print(name);
+}
+
+void test4(List<String>? names)
+{
+  // final int length;
+  // if(names!=null){
+  //   length = names.length;
+  // }
+  // else{
+  //   length = 0;
+  // }
+  final length = names?.length ?? 0; //operator warunkowy
+  names?.add('Baz'); //musi byc z ? bo nasza lista moze byc null
+
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -57,7 +88,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //print(getFullName('Marek', 'Kowalski'));
-    test();
+    test3(null, null,'Baz');
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
