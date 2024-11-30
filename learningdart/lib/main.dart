@@ -19,6 +19,21 @@ void main() {
   runApp(const MyApp());
 }
 
+class Dog {
+  final String name;
+  Dog(this.name);
+
+  factory Dog.fluffball(){ //factory constructor
+    return Dog('Fluffball');
+  }
+}
+
+void test8()
+{
+  final fluffball = Dog.fluffball();
+  print(fluffball.name);
+}
+
 void test(){
   String? name = null;// jest uzywane w jezyku swift (zmienna jest nullable)
   print(name);
@@ -77,9 +92,96 @@ void test4(List<String>? names)
   //   length = 0;
   // }
   final length = names?.length ?? 0; //operator warunkowy
-  names?.add('Baz'); //musi byc z ? bo nasza lista moze byc null
+  names?.add('Baz'); //musi byc z ? bo nasza lista moze byc null  
 
 }
+
+enum PersonProperties {
+  firstName, lastName, age
+}
+
+enum AnimalType {cat, dog, bunny}
+
+void test5()
+{
+  print(PersonProperties.firstName);
+  print(PersonProperties.firstName.name);
+}
+
+class Person
+{
+  final String name;
+
+  Person(this.name); //constructor (basic)
+
+  void run(){
+    print("Running");
+  }
+
+  void printName()
+  {
+    print(name); //avoid this because it's not good practice
+  }
+
+  void breathe(){
+    print("Breathing");
+  }
+}
+
+abstract class LivingThing
+{
+  void breathe(){
+    print("Living thing is breathing");
+  }
+
+  void move()
+  {
+    print("Living thing is moving");
+  }
+}
+
+class Cat extends LivingThing
+{
+  void meow(){
+    print("Meow");
+  }
+}
+
+void test6(AnimalType type)
+{
+  print(type);
+
+  switch(type){
+    case AnimalType.cat:
+      print('Meow');
+      break;
+    case AnimalType.dog:
+      print('Woof');
+      break;
+    case AnimalType.bunny:
+      print('Squeak');
+      break;
+  }
+
+  print("Function is finished");
+}
+
+void test7()
+{
+  final person = Person('Zbyszek'); //tworzymy obiekt klasy
+  person.run();
+  print(person.name);
+  person.printName();
+
+  final fluffers = Cat();
+  fluffers.breathe();
+  fluffers.move();
+  fluffers.meow();
+
+  //final thing = LivingThing(); //not working because it's abstract class
+}
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -88,7 +190,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //print(getFullName('Marek', 'Kowalski'));
-    test3(null, null,'Baz');
+    //test6(AnimalType.cat);
+    test8();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
