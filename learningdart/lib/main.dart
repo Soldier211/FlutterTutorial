@@ -20,24 +20,13 @@ void main() {
 }
 
 void test(){
-  const name = 'Foo';
+  String? name = null;// jest uzywane w jezyku swift (zmienna jest nullable)
+  print(name);
+  name = 'Marek';
+  print(name);
+  name = null; 
 
-  if (name == 'Foo'){
-    print('Yes this is Foo');
-  }
-  else{ //istnieje takze else if
-    print('No this is not Foo');
-  }
 
-  var age = 20;
-  final ageMinusOne = age--;
-  print(age); //19
-  print(ageMinusOne); //20
-
-  final name2 = 'Lubie_placki';
-
-  final name2Times20 = name2 * 20;
-  print(name2Times20);
 }
 
 void test2(){
@@ -68,7 +57,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //print(getFullName('Marek', 'Kowalski'));
-    test2();
+    test();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
